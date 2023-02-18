@@ -10,14 +10,14 @@ function areaInputValue(fieldId) {
 
 }
 // Get The Element Value as input value such as Ellipse, Pentagon, Rhombus, Parallelogram
-function getElementNumberValue(elementId){
-        // Get the Input Value from an Element
-        const inputOneElement = document.getElementById(elementId);
-        const inputOneString = inputOneElement.innerText;
-        const inputOneValue = parseFloat(inputOneString);
-        const inputOneValueString = inputOneValue.toFixed(2);
-        const inputOne = parseFloat(inputOneValueString);
-        return inputOne
+function getElementNumberValue(elementId) {
+    // Get the Input Value from an Element
+    const inputOneElement = document.getElementById(elementId);
+    const inputOneString = inputOneElement.innerText;
+    const inputOneValue = parseFloat(inputOneString);
+    const inputOneValueString = inputOneValue.toFixed(2);
+    const inputOne = parseFloat(inputOneValueString);
+    return inputOne
 }
 // Adding Event Listener to Calculate button of Triangle Card for calculating Triangle Area
 document.getElementById('tri-btn').addEventListener('click', function () {
@@ -48,7 +48,7 @@ document.getElementById('tri-btn').addEventListener('click', function () {
         button.classList.add('btn');
         button.classList.add('btn-primary');
         button.classList.add('text-white');
-        
+
         span1.innerHTML = areaName;
         span2.innerHTML = displayAreaValue;
         span2.classList.add('mx-3');
@@ -95,7 +95,7 @@ document.getElementById('rect-btn').addEventListener('click', function () {
 
         button.classList.add('btn-primary');
         button.classList.add('text-white');
-        
+
         span1.innerHTML = areaName;
         span2.innerHTML = displayAreaValue;
         span2.classList.add('mx-3');
@@ -114,11 +114,11 @@ document.getElementById('rect-btn').addEventListener('click', function () {
 })
 
 // Calculate The Ellipse Area
-document.getElementById('ellipse-btn').addEventListener('click',function(){
+document.getElementById('ellipse-btn').addEventListener('click', function () {
     // Get the First Input Value
-    const firstInputValue =  getElementNumberValue('a');
+    const firstInputValue = getElementNumberValue('a');
     // Get the Second Input Value
-    const secondInputValue =  getElementNumberValue('b');
+    const secondInputValue = getElementNumberValue('b');
     // Get the pi
     const piValue = 3.1416;
     const piString = piValue.toFixed(2);
@@ -132,11 +132,11 @@ document.getElementById('ellipse-btn').addEventListener('click',function(){
     displayAreaElement.innerHTML = ellipseArea + 'cm<sup>2</sup>';
 })
 // Calculate The Rhombus Area
-document.getElementById('rhombus-btn').addEventListener('click',function(){
+document.getElementById('rhombus-btn').addEventListener('click', function () {
     // Get the First Input Value
-    const firstInputValue =  getElementNumberValue('rhomInputOne');
+    const firstInputValue = getElementNumberValue('rhomInputOne');
     // Get the Second Input Value
-    const secondInputValue =  getElementNumberValue('rhomInputTwo');
+    const secondInputValue = getElementNumberValue('rhomInputTwo');
     // Rhombus Area = 0.5 * a * b
     const rhombusAreaValue = 0.5 * firstInputValue * secondInputValue;
     const rhombusAreaValueString = rhombusAreaValue.toFixed(2);
@@ -146,11 +146,11 @@ document.getElementById('rhombus-btn').addEventListener('click',function(){
     displayAreaElement.innerHTML = rhombusArea + 'cm<sup>2</sup>';
 })
 // Calculate The Pentagon Area
-document.getElementById('penta-btn').addEventListener('click',function(){
+document.getElementById('penta-btn').addEventListener('click', function () {
     // Get the First Input Value
-    const firstInputValue =  getElementNumberValue('pentaInputOne');
+    const firstInputValue = getElementNumberValue('pentaInputOne');
     // Get the Second Input Value
-    const secondInputValue =  getElementNumberValue('pentaInputTwo');
+    const secondInputValue = getElementNumberValue('pentaInputTwo');
     // Pentagon Area = 0.5 * a * b
     const pentagonAreaValue = 0.5 * firstInputValue * secondInputValue;
     const pentagonAreaValueString = pentagonAreaValue.toFixed(2);
@@ -160,11 +160,11 @@ document.getElementById('penta-btn').addEventListener('click',function(){
     displayAreaElement.innerHTML = pentagonArea + 'cm<sup>2</sup>';
 })
 // Calculate The Parallelogram Area
-document.getElementById('para-btn').addEventListener('click',function(){
+document.getElementById('para-btn').addEventListener('click', function () {
     // Get the First Input Value
-    const firstInputValue =  getElementNumberValue('paraInputOne');
+    const firstInputValue = getElementNumberValue('paraInputOne');
     // Get the Second Input Value
-    const secondInputValue =  getElementNumberValue('paraInputTwo');
+    const secondInputValue = getElementNumberValue('paraInputTwo');
     // Pentagon Area = a * b
     const parallelogramAreaValue = firstInputValue * secondInputValue;
     const parallelogramAreaValueString = parallelogramAreaValue.toFixed(2);
@@ -173,3 +173,15 @@ document.getElementById('para-btn').addEventListener('click',function(){
     const displayAreaElement = document.getElementById('parallelogramArea');
     displayAreaElement.innerHTML = parallelogramArea + 'cm<sup>2</sup>';
 })
+
+// Show Random background color on hover state in Area Calculator cards
+function randomcolor(){
+    const randomColor =  Math.floor(Math.random() * 256);
+    return randomColor;
+};
+const elements = document.getElementsByClassName('card');
+for(let i = 0;i < elements.length-1; i++ ){
+    elements[i].addEventListener('click',function(){
+        elements[i].style.backgroundColor = 'rgba('+ randomcolor() + ',' + randomcolor()+ ',' + randomcolor() + '\)';
+    })
+}
