@@ -129,7 +129,7 @@ document.getElementById('ellipse-btn').addEventListener('click',function(){
     const ellipseArea = parseFloat(ellipseAreaValueString)
     // Show the result
     const displayAreaElement = document.getElementById('ellipseArea');
-    displayAreaElement.innerText = ellipseArea;
+    displayAreaElement.innerHTML = ellipseArea + 'cm<sup>2</sup>';
 })
 // Calculate The Rhombus Area
 document.getElementById('rhombus-btn').addEventListener('click',function(){
@@ -140,8 +140,22 @@ document.getElementById('rhombus-btn').addEventListener('click',function(){
     // Ellipse Area = 3.1416 * a * b
     const rhombusAreaValue = 0.5 * firstInputValue * secondInputValue;
     const rhombusAreaValueString = rhombusAreaValue.toFixed(2);
-    const rhombusArea = parseFloat(rhombusAreaValueString)
+    const rhombusArea = parseFloat(rhombusAreaValueString);
     // Show the result
     const displayAreaElement = document.getElementById('rhombusArea');
-    displayAreaElement.innerText = rhombusArea;
+    displayAreaElement.innerHTML = rhombusArea + 'cm<sup>2</sup>';
+})
+// Calculate The Pentagon Area
+document.getElementById('penta-btn').addEventListener('click',function(){
+    // Get the First Input Value
+    const firstInputValue =  getElementNumberValue('pentaInputOne');
+    // Get the Second Input Value
+    const secondInputValue =  getElementNumberValue('pentaInputTwo');
+    // Ellipse Area = 3.1416 * a * b
+    const pentagonAreaValue = 0.5 * firstInputValue * secondInputValue;
+    const pentagonAreaValueString = pentagonAreaValue.toFixed(2);
+    const pentagonArea = parseFloat(pentagonAreaValueString)
+    // Show the result
+    const displayAreaElement = document.getElementById('pentagonArea');
+    displayAreaElement.innerHTML = pentagonArea + 'cm<sup>2</sup>';
 })
