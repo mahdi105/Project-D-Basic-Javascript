@@ -9,6 +9,7 @@ function areaInputValue(fieldId) {
     return areaInputX;
 
 }
+// Get The Element Value as input value such as Ellipse, Pentagon, Rhombus, Parallelogram
 function getElementNumberValue(elementId){
         // Get the Input Value from an Element
         const inputOneElement = document.getElementById(elementId);
@@ -129,6 +130,18 @@ document.getElementById('ellipse-btn').addEventListener('click',function(){
     // Show the result
     const displayAreaElement = document.getElementById('ellipseArea');
     displayAreaElement.innerText = ellipseArea;
-    console.log(firstInputValue,secondInputValue)
-
+})
+// Calculate The Rhombus Area
+document.getElementById('rhombus-btn').addEventListener('click',function(){
+    // Get the First Input Value
+    const firstInputValue =  getElementNumberValue('rhomInputOne');
+    // Get the Second Input Value
+    const secondInputValue =  getElementNumberValue('rhomInputTwo');
+    // Ellipse Area = 3.1416 * a * b
+    const rhombusAreaValue = 0.5 * firstInputValue * secondInputValue;
+    const rhombusAreaValueString = rhombusAreaValue.toFixed(2);
+    const rhombusArea = parseFloat(rhombusAreaValueString)
+    // Show the result
+    const displayAreaElement = document.getElementById('rhombusArea');
+    displayAreaElement.innerText = rhombusArea;
 })
