@@ -137,7 +137,7 @@ document.getElementById('rhombus-btn').addEventListener('click',function(){
     const firstInputValue =  getElementNumberValue('rhomInputOne');
     // Get the Second Input Value
     const secondInputValue =  getElementNumberValue('rhomInputTwo');
-    // Ellipse Area = 3.1416 * a * b
+    // Rhombus Area = 0.5 * a * b
     const rhombusAreaValue = 0.5 * firstInputValue * secondInputValue;
     const rhombusAreaValueString = rhombusAreaValue.toFixed(2);
     const rhombusArea = parseFloat(rhombusAreaValueString);
@@ -151,11 +151,25 @@ document.getElementById('penta-btn').addEventListener('click',function(){
     const firstInputValue =  getElementNumberValue('pentaInputOne');
     // Get the Second Input Value
     const secondInputValue =  getElementNumberValue('pentaInputTwo');
-    // Ellipse Area = 3.1416 * a * b
+    // Pentagon Area = 0.5 * a * b
     const pentagonAreaValue = 0.5 * firstInputValue * secondInputValue;
     const pentagonAreaValueString = pentagonAreaValue.toFixed(2);
     const pentagonArea = parseFloat(pentagonAreaValueString)
     // Show the result
     const displayAreaElement = document.getElementById('pentagonArea');
     displayAreaElement.innerHTML = pentagonArea + 'cm<sup>2</sup>';
+})
+// Calculate The Parallelogram Area
+document.getElementById('para-btn').addEventListener('click',function(){
+    // Get the First Input Value
+    const firstInputValue =  getElementNumberValue('paraInputOne');
+    // Get the Second Input Value
+    const secondInputValue =  getElementNumberValue('paraInputTwo');
+    // Pentagon Area = a * b
+    const parallelogramAreaValue = firstInputValue * secondInputValue;
+    const parallelogramAreaValueString = parallelogramAreaValue.toFixed(2);
+    const parallelogramArea = parseFloat(parallelogramAreaValueString)
+    // Show the result
+    const displayAreaElement = document.getElementById('parallelogramArea');
+    displayAreaElement.innerHTML = parallelogramArea + 'cm<sup>2</sup>';
 })
