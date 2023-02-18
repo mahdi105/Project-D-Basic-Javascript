@@ -76,17 +76,17 @@
                     <div class="card d-flex flex-column align-items-center py-4 px-3">
                         <img src="images/rectangle.png" class="card-img-top w-50 mb-3" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title text-center fw-bold">Rectangle</h5>
+                            <h5 class="card-title text-center fw-bold" id="rectangle">Rectangle</h5>
                             <p class="fw-semibold text-center mb-4">Area (A) = W <i class="fas fa-times"></i> L </p>
                             <div class="d-flex align-items-center justify-content-center gap-2 mb-3">
-                                <input type="number" name="" id="tri-b"
+                                <input type="number" name="" id="rect-w"
                                     class="w-25 form-control py-1 px-1 bg-light border-1"
                                     placeholder="W"><span>cm</span>
-                                <input type="number" name="" id="tri-h"
+                                <input type="number" name="" id="rect-l"
                                     class="w-25 form-control py-1 px-1 bg-light border-1"
                                     placeholder="L"><span>cm</span>
                             </div>
-                            <button class="btn btn-primary d-block w-100">Calculate</button>
+                            <button class="btn btn-primary d-block w-100" id="rect-btn">Calculate</button>
                         </div>
                     </div>
                 </div>
@@ -98,17 +98,10 @@
                                 <h5 class="card-title text-center fw-bold">Ellipse</h5>
                                 <p class="fw-semibold text-center">Area (A) = &pi;ab; <span style="color:red">[&pi; =
                                         3.1416]</span></p>
-                                <p class="text-center mb-4">a = 10cm, b = 4cm</p>
-                                <div class="d-flex align-items-center justify-content-center gap-2 mb-3">
-                                    <input type="number" name="" id="tri-b"
-                                        class="w-25 form-control py-1 px-1 bg-light border-1"
-                                        placeholder="a"><span>cm</span>
-                                    <input type="number" name="" id="tri-h"
-                                        class="w-25 form-control py-1 px-1 bg-light border-1"
-                                        placeholder="b"><span>cm</span>
-                                </div>
+                                <p class="text-center mb-4">a = <span id="a">10</span>cm, b = <span id="b">4</span>cm</p>
+                                <p>Total Area Value: <span id="ellipseArea"></span></p>
                             </div>
-                            <button class="btn btn-primary d-block w-100">Calculate</button>
+                            <button class="btn btn-primary d-block w-100" id="ellipse-btn">Calculate</button>
                         </div>
                     </div>
                 </div>
