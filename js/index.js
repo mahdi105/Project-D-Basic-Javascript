@@ -185,3 +185,7 @@ for(let i = 0;i < elements.length-1; i++ ){
         elements[i].style.backgroundColor = 'rgba('+ randomcolor() + ',' + randomcolor()+ ',' + randomcolor() + '\)';
     })
 }
+// Add blog page location to The Blog button at header section
+document.getElementById('blog-btn').addEventListener('click',function(){
+    window.location.href = 'blog.html';
+})
