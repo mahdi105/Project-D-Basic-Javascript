@@ -5,9 +5,8 @@ function areaInputValue(fieldId) {
     const areaValue = parseFloat(areaXInputValueString);
     const areaValueFixedTo = areaValue.toFixed(2);
     const areaInputX = parseFloat(areaValueFixedTo);
-    // areaXInput.value = '';
+    areaXInput.value = '';
     return areaInputX;
-
 }
 // Get The Element Value as input value such as Ellipse, Pentagon, Rhombus, Parallelogram
 function getElementNumberValue(elementId) {
@@ -19,6 +18,40 @@ function getElementNumberValue(elementId) {
     const inputOne = parseFloat(inputOneValueString);
     return inputOne
 }
+// Show the total area as a list item in the AREA CALCULATION Section
+function showCalculationResultListItem(areaNameId, totalarea) {
+    const ol = document.getElementById('calculate-result');
+    const areaUnit = 'cm<sup>2</sup>';
+    //Result Item that will be displayed after occuring this event
+    const resultItem = document.createElement('li');
+    const span1 = document.createElement('span');
+    const span2 = document.createElement('span');
+    const button = document.createElement('button');
+    //Area Shape Name
+    const areaNameElement = document.getElementById(areaNameId);
+    const areaName = areaNameElement.innerText;
+    //Area Display Value
+    const displayAreaValue = totalarea + areaUnit;
+
+    button.innerHTML = 'Conver To m<sup>2</sup>';
+    button.classList.add('btn');
+    button.classList.add('btn-primary');
+    button.classList.add('text-white');
+    button.classList.add('convertToM2');
+    span1.innerHTML = areaName;
+    span2.innerHTML = displayAreaValue;
+    span2.classList.add('mx-3');
+    span2.classList.add('areaValueString');
+    button.style.fontSize = '10px';
+    resultItem.style.fontSize = '11px';
+    resultItem.style.marginBottom = '5px';
+    // Append Child into the List Item
+    resultItem.appendChild(span1);
+    resultItem.appendChild(span2);
+    resultItem.appendChild(button);
+    // resultItem.classList.add('d-flex align-items-center justify-content-between');
+    ol.appendChild(resultItem);
+}
 // Adding Event Listener to Calculate button of Triangle Card for calculating Triangle Area
 document.getElementById('tri-btn').addEventListener('click', function () {
     // Get the Triangle Breath Value from Input ('tri-b')
@@ -27,40 +60,12 @@ document.getElementById('tri-btn').addEventListener('click', function () {
     const triangleH = areaInputValue('tri-h');
     if (triangleB > 0 && triangleH > 0 && !isNaN(triangleB) && !isNaN(triangleH)) {
         // Get the Ordered List for displaying calculated area
-        const ol = document.getElementById('calculate-result');
         // Total Calculated Area
         const areaValue = 0.5 * triangleB * triangleH;
         const areaValueFixedTo = areaValue.toFixed(2);
         const area = parseFloat(areaValueFixedTo);
-        const areaUnit = 'cm<sup>2</sup>';
-        //Result Item that will be displayed after occuring this event
-        const resultItem = document.createElement('li');
-        const span1 = document.createElement('span');
-        const span2 = document.createElement('span');
-        const button = document.createElement('button');
-        //Area Shape Name
-        const areaNameElement = document.getElementById('triangle');
-        const areaName = areaNameElement.innerText;
-        //Area Display Value
-        const displayAreaValue = area + areaUnit;
-
-        button.innerHTML = 'Conver To m<sup>2</sup>';
-        button.classList.add('btn');
-        button.classList.add('btn-primary');
-        button.classList.add('text-white');
-
-        span1.innerHTML = areaName;
-        span2.innerHTML = displayAreaValue;
-        span2.classList.add('mx-3');
-        button.style.fontSize = '10px';
-        resultItem.style.fontSize = '11px';
-        resultItem.style.marginBottom = '5px';
-        // Append Child into the List Item
-        resultItem.appendChild(span1);
-        resultItem.appendChild(span2);
-        resultItem.appendChild(button);
-        // resultItem.classList.add('d-flex align-items-center justify-content-between');
-        ol.appendChild(resultItem);
+        // show the calculated area to the 'Area Calculation Section'
+        showCalculationResultListItem('triangle', area);
     } else {
         alert("Please Enter the Breadth and Height of the Triangle")
     }
@@ -72,42 +77,12 @@ document.getElementById('rect-btn').addEventListener('click', function () {
     // Get the Rectangle Height Value from Input ('tri-h')
     const rectangleL = areaInputValue('rect-l');
     if (rectangleW > 0 && rectangleL > 0 && !isNaN(rectangleW) && !isNaN(rectangleL)) {
-        // Get the Ordered List for displaying calculated area
-        const ol = document.getElementById('calculate-result');
         // Total Calculated Area
         const areaValue = rectangleW * rectangleL;
         const areaValueFixedTo = areaValue.toFixed(2);
         const area = parseFloat(areaValueFixedTo);
-        const areaUnit = 'cm<sup>2</sup>';
-        //Result Item that will be displayed after occuring this event
-        const resultItem = document.createElement('li');
-        const span1 = document.createElement('span');
-        const span2 = document.createElement('span');
-        const button = document.createElement('button');
-        //Area Shape Name
-        // const areaNameElement = document.getElementById('triangle');
-        const areaNameElement = document.getElementById('rectangle');
-        const areaName = areaNameElement.innerText;
-        //Area Display Value
-        const displayAreaValue = area + areaUnit;
-        button.innerHTML = 'Convert To m<sup>2</sup>';
-        button.classList.add('btn');
-
-        button.classList.add('btn-primary');
-        button.classList.add('text-white');
-
-        span1.innerHTML = areaName;
-        span2.innerHTML = displayAreaValue;
-        span2.classList.add('mx-3');
-        button.style.fontSize = '10px';
-        resultItem.style.fontSize = '11px';
-        resultItem.style.marginBottom = '5px';
-        // Append Child into the List Item
-        resultItem.appendChild(span1);
-        resultItem.appendChild(span2);
-        resultItem.appendChild(button);
-        // resultItem.classList.add('d-flex align-items-center justify-content-between');
-        ol.appendChild(resultItem);
+        // show the calculated area to the 'Area Calculation Section' as a list item
+        showCalculationResultListItem('rectangle', area);
     } else {
         alert("Please Enter the width and length of the Rectangle")
     }
@@ -130,6 +105,8 @@ document.getElementById('ellipse-btn').addEventListener('click', function () {
     // Show the result
     const displayAreaElement = document.getElementById('ellipseArea');
     displayAreaElement.innerHTML = ellipseArea + 'cm<sup>2</sup>';
+    // Show the result as a list item to the 'Area Calculation' Section
+    showCalculationResultListItem('ellipse', ellipseArea);
 })
 // Calculate The Rhombus Area
 document.getElementById('rhombus-btn').addEventListener('click', function () {
@@ -144,6 +121,8 @@ document.getElementById('rhombus-btn').addEventListener('click', function () {
     // Show the result
     const displayAreaElement = document.getElementById('rhombusArea');
     displayAreaElement.innerHTML = rhombusArea + 'cm<sup>2</sup>';
+    // Show the result as a list item to the 'Area Calculation' Section
+    showCalculationResultListItem('rhombus', rhombusArea);
 })
 // Calculate The Pentagon Area
 document.getElementById('penta-btn').addEventListener('click', function () {
@@ -158,6 +137,8 @@ document.getElementById('penta-btn').addEventListener('click', function () {
     // Show the result
     const displayAreaElement = document.getElementById('pentagonArea');
     displayAreaElement.innerHTML = pentagonArea + 'cm<sup>2</sup>';
+    // Show the result as a list item to the 'Area Calculation' Section
+    showCalculationResultListItem('pentagon', pentagonArea);
 })
 // Calculate The Parallelogram Area
 document.getElementById('para-btn').addEventListener('click', function () {
@@ -172,20 +153,27 @@ document.getElementById('para-btn').addEventListener('click', function () {
     // Show the result
     const displayAreaElement = document.getElementById('parallelogramArea');
     displayAreaElement.innerHTML = parallelogramArea + 'cm<sup>2</sup>';
+    // Show the result as a list item to the 'Area Calculation' Section
+    showCalculationResultListItem('parallelogram', parallelogramArea);
 })
 
 // Show Random background color on hover state in Area Calculator cards
-function randomcolor(){
-    const randomColor =  Math.floor(Math.random() * 256);
+function randomcolor() {
+    const randomColor = Math.floor(Math.random() * 256);
     return randomColor;
 };
 const elements = document.getElementsByClassName('card');
-for(let i = 0;i < elements.length-1; i++ ){
-    elements[i].addEventListener('click',function(){
-        elements[i].style.backgroundColor = 'rgba('+ randomcolor() + ',' + randomcolor()+ ',' + randomcolor() + '\)';
+for (let i = 0; i < elements.length - 1; i++) {
+    elements[i].addEventListener('mouseover', function () {
+        elements[i].style.backgroundColor = 'rgba(' + randomcolor() + ',' + randomcolor() + ',' + randomcolor() + '\)';
     })
 }
 // Add blog page location to The Blog button at header section
-document.getElementById('blog-btn').addEventListener('click',function(){
+document.getElementById('blog-btn').addEventListener('click', function () {
     window.location.href = 'blog.html';
+})
+// Clear all calculation result
+document.getElementById('clearResult').addEventListener('click',function(){
+    const areaOrderedList = document.getElementById('calculate-result');
+    areaOrderedList.innerHTML = '';
 })
